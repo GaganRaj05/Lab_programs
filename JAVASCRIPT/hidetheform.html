@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIDE</title>
+    <style>
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <form id="registration">
+        <input type="text"  placeholder="Name:">
+        <input type="text"  placeholder="Register_No">
+        <input type="text" placeholder="address">
+        <button type="submit">Submit</button>
+    </form>
+    <div id="thanks" class="hidden">
+        <h1>Thank you for your application</h1>
+    </div>
+</body>
+<script>
+    document.getElementById("registration").addEventListener("submit", function(event) {
+        event.preventDefault();
+        document.getElementById("registration").classList.add("hidden");
+        document.getElementById("thanks").classList.remove("hidden");
+    })
+</script>
+</html>
