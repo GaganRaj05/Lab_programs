@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript-Calculator</title>
+</head>
+<body>
+    <form>
+        Enter Value 1:
+        <input type="text" id="v1">
+        Enter value 2:
+        <input type="text" id="v2">
+        <input type="text" value="RESULT" id="res" readonly>
+        <input type="button" onclick="add()" value="ADD">
+        <input type="button" onclick="sub()" value="sub">
+        <input type="button" onclick="product()" value="PROD">
+        <input type="button" onclick="divide()" value="DIVIDE">
+
+
+    </form>
+</body>
+<script>
+    function add() {
+        
+        let v1 = parseFloat(document.getElementById("v1").value);
+        let v2 = parseFloat(document.getElementById("v2").value);
+        document.getElementById("res").value = v1+v2;
+        console.log(v1+v2)
+    }
+    function sub() {
+        let v1 = parseFloat(document.getElementById("v1").value);
+        let v2 = parseFloat(document.getElementById("v2").value);
+        document.getElementById("res").value = (v1-v2)
+    }
+    function divide() {
+        let v1 = parseFloat(document.getElementById("v1").value);
+        let v2 = parseFloat(document.getElementById("v2").value);
+        if(v2===0) {
+            alert("enter valid input");
+            return;
+        }
+        document.getElementById("res").value = (v1/v2)
+    }
+    function product() {
+        let v1 = parseFloat(document.getElementById("v1").value);
+        let v2 = parseFloat(document.getElementById("v2").value);
+        document.getElementById("res").value = (v1*v2)
+    }
+</script>
+</html>
