@@ -1,0 +1,105 @@
+MOUNTING PHASE
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+
+class Mounting extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            favcol:"red"
+        }
+    }
+    componentDidMount() {
+        setTimeout(()=> {
+            this.setState({favcol:"yellow"})  
+        },1000)
+    }
+    render() {
+        return(
+            <h1>My favourite color is {this.state.favcol}</h1>
+        )
+    }
+}
+ReactDOM.render(<Mounting/>,document.getElementById("root"))
+
+UPDATING PHASE
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+
+class Mounting extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            favcol:"red"
+        }
+    }
+    componentDidMount() {
+        setTimeout(() => {
+          this.setState({favcol: "yellow"})
+        }, 1000)
+      }
+      getSnapshotBeforeUpdate(prevProps, prevState) {
+        document.getElementById("div1").innerHTML =
+        "Before the update, the favorite was " + prevState.favcol;
+      }
+      componentDidUpdate() {
+        document.getElementById("div2").innerHTML =
+        "The updated favorite is " + this.state.favcol;
+      }
+    render() {
+        return(
+            <div>
+                <h1>My favourite color is {this.state.favcol}</h1>
+                <div id="v1"></div>
+                <div id="v2"></div>
+            </div>
+        )
+    }
+}
+UNMOUNTING PHASE
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+
+class Container extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {show: true};
+    }
+    delHeader = () => {
+      this.setState({show: false});
+    }
+    render() {
+      let myheader;
+      if (this.state.show) {
+        myheader = <Child />;
+      };
+      return (
+        <div>
+        {myheader}
+        <button type="button" onClick={this.delHeader}>Delete Header</button>
+        </div>
+      );
+    }
+  }
+  
+  class Child extends React.Component {
+    componentWillUnmount() {
+      alert("The component named Header is about to be unmounted.");
+    }
+    render() {
+      return (
+        <h1>Hello World!</h1>
+      );
+    }
+  }
+  
+  ReactDOM.render(<Container />, document.getElementById('root'));
+  
+  
